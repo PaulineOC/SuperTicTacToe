@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Super Tic Tac Toe</title>
+	
+
+	<style>
+		* {
+			box-sizing: border-box;
+		}
+
+		html,
+		body {
+			height: 100%;
+		}
+
+		body {
+			font-size: 2em;
+			align-items: center;
+			justify-content: center;
+			vertical-align: center;
+			align-content: center;
+		}
+
+		.smallGame {
+			display: flex;
+			flex-direction: column;
+			padding: 3%;
+		}
+
+		.mainGame{
+			display: flex;
+			flex-direction: column;
+
+		}
+
+		.row {
+			width: 100%;
+			flex-direction: row;
+			display: flex;
+		}
+
+		.cell {
+			width: 100%;
+			align-content: center;
+			text-align: center;
+			justify-content: center;
+			flex-grow: 1;
+			background-color: #00FF00;
+		}
+
+		.top{
+			border-bottom: 2px black solid;
+		}
+		.mid{
+			border-bottom: 2px black solid;
+			border-top: 2px black solid;
+		}
+		.bottom{
+			border-top: 2px black solid;
+		}
+		.left{
+			border-right: 2px black solid;
+		}
+		.center{
+			border-right: 2px black solid; 
+			border-left: 2px black solid;
+		}
+		.right{
+			border-left: 2px black solid;
+		}
+
+	</style>
+
+</head>
+
+<body>
+<div class="opening">Hello</div>
+
+
+<div class="mainGame">
+
+  <div class="row" id="0">
+    <div class="cell top left" id="0,0" >
+    	<div class="smallGame">
+	  		<div class="row" id="0">
+			    <div class="cell top left" id="0,0" >
+			    	A
+			    </div>
+			    <div class="cell top center" id="0,1">
+			    	B
+			    </div>
+			    <div class="cell top right" id="0,2" >
+			    	C
+			    </div>
+			</div>
+			<div class="row" id="1">
+			    <div class="cell mid left" id="1,0" >
+			    	D
+			    </div>
+			    <div class="cell mid center" id="1,1" >
+			    	E
+			    </div>
+			    <div class="cell mid right" id="1,2" >
+			    	F
+			    </div>
+			</div>
+			<div class="row" id="2">
+			    <div class="cell bottom left" id="2,0" >
+			    	G
+			    </div>
+			    <div class="cell bottom center" id="2,1" >
+			    	H
+			    </div>
+			    <div class="cell bottom right" id="2,2" >
+			    	I
+			    </div>
+			</div>
+		</div>
+    </div>
+    <div class="cell top center" id="0,1">
+    	<div class="smallGame">
+	  		<div class="row" id="0">
+			    <div class="cell top left" id="0,0" >
+			    	A
+			    </div>
+			    <div class="cell top center" id="0,1">
+			    	B
+			    </div>
+			    <div class="cell top right" id="0,2" >
+			    	C
+			    </div>
+			</div>
+			<div class="row" id="1">
+			    <div class="cell mid left" id="1,0" >
+			    	D
+			    </div>
+			    <div class="cell mid center" id="1,1" >
+			    	E
+			    </div>
+			    <div class="cell mid right" id="1,2" >
+			    	F
+			    </div>
+			</div>
+			<div class="row" id="2">
+			    <div class="cell bottom left" id="2,0" >
+			    	G
+			    </div>
+			    <div class="cell bottom center" id="2,1" >
+			    	H
+			    </div>
+			    <div class="cell bottom right" id="2,2" >
+			    	I
+			    </div>
+			</div>
+		</div>
+    </div>
+    <div class="cell top right" id="0,2" >
+    	<div class="smallGame">
+	  		<div class="row" id="0">
+			    <div class="cell top left" id="0,0" >
+			    	A
+			    </div>
+			    <div class="cell top center" id="0,1">
+			    	B
+			    </div>
+			    <div class="cell top right" id="0,2" >
+			    	C
+			    </div>
+			</div>
+			<div class="row" id="1">
+			    <div class="cell mid left" id="1,0" >
+			    	D
+			    </div>
+			    <div class="cell mid center" id="1,1" >
+			    	E
+			    </div>
+			    <div class="cell mid right" id="1,2" >
+			    	F
+			    </div>
+			</div>
+			<div class="row" id="2">
+			    <div class="cell bottom left" id="2,0" >
+			    	G
+			    </div>
+			    <div class="cell bottom center" id="2,1" >
+			    	H
+			    </div>
+			    <div class="cell bottom right" id="2,2" >
+			    	I
+			    </div>
+			</div>
+		</div>
+    </div>
+  </div>
+
+   <div class="row" id="1">
+    <div class="cell mid left" id="1,0" >
+    	<div class="smallGame">
+	  		<div class="row" id="0">
+			    <div class="cell top left" id="0,0" >
+			    	A
+			    </div>
+			    <div class="cell top center" id="0,1">
+			    	B
+			    </div>
+			    <div class="cell top right" id="0,2" >
+			    	C
+			    </div>
+			</div>
+			<div class="row" id="1">
+			    <div class="cell mid left" id="1,0" >
+			    	D
+			    </div>
+			    <div class="cell mid center" id="1,1" >
+			    	E
+			    </div>
+			    <div class="cell mid right" id="1,2" >
+			    	F
+			    </div>
+			</div>
+			<div class="row" id="2">
+			    <div class="cell bottom left" id="2,0" >
+			    	G
+			    </div>
+			    <div class="cell bottom center" id="2,1" >
+			    	H
+			    </div>
+			    <div class="cell bottom right" id="2,2" >
+			    	I
+			    </div>
+			</div>
+		</div>
+    </div>
+    <div class="cell mid center" id="1,1" >
+    	<div class="smallGame">
+	  		<div class="row" id="0">
+			    <div class="cell top left" id="0,0" >
+			    	A
+			    </div>
+			    <div class="cell top center" id="0,1">
+			    	B
+			    </div>
+			    <div class="cell top right" id="0,2" >
+			    	C
+			    </div>
+			</div>
+			<div class="row" id="1">
+			    <div class="cell mid left" id="1,0" >
+			    	D
+			    </div>
+			    <div class="cell mid center" id="1,1" >
+			    	E
+			    </div>
+			    <div class="cell mid right" id="1,2" >
+			    	F
+			    </div>
+			</div>
+			<div class="row" id="2">
+			    <div class="cell bottom left" id="2,0" >
+			    	G
+			    </div>
+			    <div class="cell bottom center" id="2,1" >
+			    	H
+			    </div>
+			    <div class="cell bottom right" id="2,2" >
+			    	I
+			    </div>
+			</div>
+		</div>
+    </div>
+    <div class="cell mid right" id="1,2" >
+    	<div class="smallGame">
+	  		<div class="row" id="0">
+			    <div class="cell top left" id="0,0" >
+			    	A
+			    </div>
+			    <div class="cell top center" id="0,1">
+			    	B
+			    </div>
+			    <div class="cell top right" id="0,2" >
+			    	C
+			    </div>
+			</div>
+			<div class="row" id="1">
+			    <div class="cell mid left" id="1,0" >
+			    	D
+			    </div>
+			    <div class="cell mid center" id="1,1" >
+			    	E
+			    </div>
+			    <div class="cell mid right" id="1,2" >
+			    	F
+			    </div>
+			</div>
+			<div class="row" id="2">
+			    <div class="cell bottom left" id="2,0" >
+			    	G
+			    </div>
+			    <div class="cell bottom center" id="2,1" >
+			    	H
+			    </div>
+			    <div class="cell bottom right" id="2,2" >
+			    	I
+			    </div>
+			</div>
+		</div>
+    </div>
+  </div>
+   <div class="row" id="2">
+    <div class="cell bottom left" id="2,0" >
+    	<div class="smallGame">
+	  		<div class="row" id="0">
+			    <div class="cell top left" id="0,0" >
+			    	A
+			    </div>
+			    <div class="cell top center" id="0,1">
+			    	B
+			    </div>
+			    <div class="cell top right" id="0,2" >
+			    	C
+			    </div>
+			</div>
+			<div class="row" id="1">
+			    <div class="cell mid left" id="1,0" >
+			    	D
+			    </div>
+			    <div class="cell mid center" id="1,1" >
+			    	E
+			    </div>
+			    <div class="cell mid right" id="1,2" >
+			    	F
+			    </div>
+			</div>
+			<div class="row" id="2">
+			    <div class="cell bottom left" id="2,0" >
+			    	G
+			    </div>
+			    <div class="cell bottom center" id="2,1" >
+			    	H
+			    </div>
+			    <div class="cell bottom right" id="2,2" >
+			    	I
+			    </div>
+			</div>
+		</div>
+    </div>
+    <div class="cell bottom center" id="2,1" >
+    	<div class="smallGame">
+	  		<div class="row" id="0">
+			    <div class="cell top left" id="0,0" >
+			    	A
+			    </div>
+			    <div class="cell top center" id="0,1">
+			    	B
+			    </div>
+			    <div class="cell top right" id="0,2" >
+			    	C
+			    </div>
+			</div>
+			<div class="row" id="1">
+			    <div class="cell mid left" id="1,0" >
+			    	D
+			    </div>
+			    <div class="cell mid center" id="1,1" >
+			    	E
+			    </div>
+			    <div class="cell mid right" id="1,2" >
+			    	F
+			    </div>
+			</div>
+			<div class="row" id="2">
+			    <div class="cell bottom left" id="2,0" >
+			    	G
+			    </div>
+			    <div class="cell bottom center" id="2,1" >
+			    	H
+			    </div>
+			    <div class="cell bottom right" id="2,2" >
+			    	I
+			    </div>
+			</div>
+		</div>
+    </div>
+    <div class="cell bottom right" id="2,2" >
+    	<div class="smallGame">
+	  		<div class="row" id="0">
+			    <div class="cell top left" id="0,0" >
+			    	A
+			    </div>
+			    <div class="cell top center" id="0,1">
+			    	B
+			    </div>
+			    <div class="cell top right" id="0,2" >
+			    	C
+			    </div>
+			</div>
+			<div class="row" id="1">
+			    <div class="cell mid left" id="1,0" >
+			    	D
+			    </div>
+			    <div class="cell mid center" id="1,1" >
+			    	E
+			    </div>
+			    <div class="cell mid right" id="1,2" >
+			    	F
+			    </div>
+			</div>
+			<div class="row" id="2">
+			    <div class="cell bottom left" id="2,0" >
+			    	G
+			    </div>
+			    <div class="cell bottom center" id="2,1" >
+			    	H
+			    </div>
+			    <div class="cell bottom right" id="2,2" >
+			    	I
+			    </div>
+			</div>
+		</div>
+    </div>
+  </div>
+</div>
+
+
+<div class="Ending"></div>
+
+
+
+
+</body>
+
+</html>

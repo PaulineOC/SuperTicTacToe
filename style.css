@@ -1,0 +1,158 @@
+		* {
+			box-sizing: border-box;
+		}
+
+		html,
+		body {
+			height: 100%;
+		}
+
+		body {
+			font-size: 2em;
+			align-items: center;
+			justify-content: center;
+			vertical-align: center;
+			align-content: center;
+		}
+
+
+
+		.blink_me {
+		  animation: blinker 1s linear infinite;
+		}
+
+		@keyframes blinker {
+		  50% {
+		    opacity: 0;
+		  }
+		}
+
+		.Rules{
+			font-size: 0.5em;
+			align-content: center;
+			margin: auto;
+			justify-content: center;
+		}
+
+		.playerChoice{
+			align-content: center;
+			margin: auto;
+			justify-content: center;
+			font-size:.5em;
+			width:75%;
+		}
+
+
+		#inGameAnnouncement{
+			font-size: 1em;
+			//color: red;
+			align-content: center;
+			margin: auto;
+			justify-content: center;
+			text-align: center;
+			width:75%;
+		}
+		#Ending{
+
+
+		}
+
+
+
+		.gameContainer {	
+			background-color: yellow;
+		}
+
+
+		.X{
+			font-weight: bold;
+			color: red;
+			opacity: 1 !important;
+		}
+		.O{
+			font-weight: bold;
+			color:blue;
+			opacity: 1 !important;
+		}
+
+		.XWinner{
+			 background: url('./xMarker.svg') no-repeat center center ;
+			 background-size: contain;
+			 height: 100%;
+			 width:100%;
+		}
+
+		.OWinner{
+			background: url('./oMarker.svg') no-repeat center ;
+			background-size: contain;
+		}
+
+
+		.smallGame {
+			display: flex;
+			flex-direction: column;
+			padding: 3%;
+			color: #6A6B68	;
+		}
+
+		.blink_me {
+  			animation: blinker 1.5s linear infinite;
+		}
+
+		@keyframes blinker {
+		  50% {
+		    opacity: 0;
+		  }
+		}
+
+		.mainGame{
+			display: flex;
+			flex-direction: column;
+			color: black;
+		}
+
+		.blank{
+			visibility: hidden;
+		}
+
+		.transparent{
+			opacity: 0.8;
+		}
+
+
+		.row {
+			width: 100%;
+			flex-direction: row;
+			display: flex;
+
+		}
+
+		.cell {
+			width: 100%;
+			align-content: center;
+			text-align: center;
+			justify-content: center;
+			flex-grow: 1;
+			background-color: #FEFDF1;
+		}
+
+		.top{
+			border-bottom: 2px  solid;
+		}
+		.mid{
+			border-bottom: 2px  solid;
+			border-top: 2px  solid;
+		}
+		.bottom{
+			border-top: 2px  solid;
+		}
+		.left{
+			border-right: 2px  solid;
+		}
+		.center{
+			border-right: 2px  solid; 
+			border-left: 2px  solid;
+		}
+		.right{
+			border-left: 2px  solid;
+		}
