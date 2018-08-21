@@ -37,8 +37,6 @@ function setup() {
 		}
 		gameContainer.append(mainGameRow);
 	}
-	//console.log("finished setting up board");
-	testFunction();
 }
 
 function testFunction(){
@@ -241,9 +239,10 @@ function playerMove(mainRow, mainCol, smallRow, smallCol){
 			//	completednsole.log(mainGame.gameStatus[thisPos.boardRow][thisPos.boardCol]);
 
 			if(checkWinner(false, parentDiv, mainGame.outerGames, thisPos.boardRow, thisPos.boardCol, playerLetter)){
-				 console.log("WINNER IS: "+ mainGame.XGoes );
-				 mainGame.canMove = false;
-				 endGame();
+				mainGame.canMove = false;
+				nextBoard.classList.toggle("blink_me");
+				endGame(gameMsg);
+				return;
 			}
 		}
 		//switch player - toggles between X and O
@@ -252,22 +251,26 @@ function playerMove(mainRow, mainCol, smallRow, smallCol){
 		}
 }
 
-function endGame(player){
+function endGame(container){
+	container.innerHTML = mainGame.winner + " wins!";
+	if(mainGame.winner === "X"){
+		container.style.color="red";
+	}
+	else if(mainGame.winner==="O"){
+		container.style.color = "blue";
+
+	}
 	console.log("END GAME");
 	let end = document.getElementById("Ending");
-	let finalText = document.createElement("h3");
-	finalText.innerHTML = mainGame.winner+ " wins!"; 
+	//let finalText = document.createElement("h3");
+	//finalText.innerHTML = mainGame.winner+ " wins!"; 
 	let restart = document.createElement("p");
 	restart.innerHTML = "Restart the page to replay";
-	end.appendChild(finalText);
+	//end.appendChild(finalText);
 	end.appendChild(restart);
 };
 
 function validMove(currPos){
-	// console.log(" Prev move: ");
-	// console.log(mainGame.prevMove);
-	// console.log("Curr Move: ");
-	// console.log(currPos);
 	if( 
 		(
 		mainGame.prevMove.boardRow===currPos.boardRow &&
@@ -286,24 +289,27 @@ function validMove(currPos){
 
 
 function checkWinner(innerBoard, parent, game, row, col, currMoveLetter){
-
 	console.log("EACH NEW MOMENT");
 	if(innerBoard && parent.classList.contains("completed")){
-		console.log("already won");
 		return false;
 	}
 	//Check horizontal
 	let horizontalWin=true; 
 	if(!innerBoard){
-		console.log(game[row][col]);
 		console.log(" HORIZONTAL\n");
 	}
-	
 	for(let i=0;i<3;i++){
-		if(!innerBoard && !game[i][col].classList.contains(currMoveLetter)){
+		
+		if(!innerBoard){
 			console.log(game[i][col]);
-			horizontalWin=false;
+			console.log(" horizontal contains ");
+			console.log(game[i][col].classList.contains(currMoveLetter));
+			console.log(!innerBoard && !game[i][col].classList.contains(currMoveLetter));
+			if(!game[i][col].classList.contains(currMoveLetter)){
+				horizontalWin=false;
+			}
 		}
+		
 		else{
 			let checkCellLetter = game[i][col].childNodes[0].innerHTML;
 			 if(checkCellLetter !== currMoveLetter){
@@ -311,6 +317,7 @@ function checkWinner(innerBoard, parent, game, row, col, currMoveLetter){
 			}
 		}
 	}
+	console.log("horizontal win: "+horizontalWin);
 	if(horizontalWin){
 		if(!innerBoard && mainGame.winner==''){
 			console.log("main winner is");
@@ -324,9 +331,15 @@ function checkWinner(innerBoard, parent, game, row, col, currMoveLetter){
 		console.log("Vertical\n");
 	}
 	for(let i=0;i<3;i++){
-		if(!innerBoard && !game[row][i].classList.contains(currMoveLetter)){
+		
+		if(!innerBoard){
 			console.log(game[row][i]);
-			verticalWin=false;
+			console.log(" vertical contains ");
+			console.log(game[row][i].classList.contains(currMoveLetter));
+			console.log(!innerBoard && !game[row][i].classList.contains(currMoveLetter));
+			if(!game[row][i].classList.contains(currMoveLetter)){
+				verticalWin=false;
+			}
 		}
 		else{
 			let checkCellLetter = game[row][i].childNodes[0].innerHTML;
@@ -336,6 +349,7 @@ function checkWinner(innerBoard, parent, game, row, col, currMoveLetter){
 			}
 		}
 	}
+	console.log("vertical win: "+verticalWin);
 	if(verticalWin){
 		if(!innerBoard && mainGame.winner==''){
 			console.log("main winner is");
@@ -349,20 +363,24 @@ function checkWinner(innerBoard, parent, game, row, col, currMoveLetter){
 		console.log(" diagonal\n");
 	}
 	//Diagonal
-		for(let i=0;i<3;i++){
-			//console.log("here is curr cell" + checkCellLetter);
-			if(!innerBoard && !game[i][i].classList.contains(currMoveLetter)){
-				console.log(game[i][i]);
-				diagonalWin= false;
-			}
-			else{
-				let checkCellLetter = game[i][i].childNodes[0].innerHTML;
-				if(checkCellLetter!==currMoveLetter){
-				//console.log("it's false");
-					diagonalWin=false;
-				}
+	for(let i=0;i<3;i++){
+		if(!innerBoard){
+			console.log(game[i][i]);
+			console.log(" diagonal contains ");
+			console.log(game[i][i].classList.contains(currMoveLetter));
+			console.log(!innerBoard && !game[i][i].classList.contains(currMoveLetter));
+			if(!game[i][i].classList.contains(currMoveLetter)){
+				diagonalWin=false;
 			}
 		}
+		else{
+			let checkCellLetter = game[i][i].childNodes[0].innerHTML;
+			if(checkCellLetter!==currMoveLetter){
+				diagonalWin=false;
+			}
+		}
+	}
+	console.log("diagonal win: "+diagonalWin);
 	if(diagonalWin){
 		if(!innerBoard && mainGame.winner==''){
 			console.log("main winner is");
@@ -376,19 +394,25 @@ function checkWinner(innerBoard, parent, game, row, col, currMoveLetter){
 		console.log(" antidiagonal\n");
 	}
 		for(let i=0;i<3;i++){
-			//console.log("here is curr cell" + checkCellLetter);
-			if(!innerBoard && !game[i][i].classList.contains(currMoveLetter)){
+			
+			if(!innerBoard){
 				console.log(game[i][((3-1)-i)]);
-				antidiagonal=false;
+				console.log(" antidiagonal contains ");
+				console.log(game[i][((3-1)-i)].classList.contains(currMoveLetter));
+				console.log(!innerBoard && !game[i][i].classList.contains(currMoveLetter));
+				if(!game[i][i].classList.contains(currMoveLetter)){
+
+					antiDiagonalWin=false;
+				}
 			}
 			else{
 				let checkCellLetter = game[i][((3-1)-i)].childNodes[0].innerHTML;
 				if(checkCellLetter!==currMoveLetter){
 					antiDiagonalWin=false;
 				}
-			}
-			
+			}	
 		}
+	console.log("antidiagonal: "+ antiDiagonalWin);
 	if(antiDiagonalWin){
 		if(!innerBoard && mainGame.winner==''){
 			console.log("main winner is");
